@@ -2,7 +2,7 @@
 
 Dumps the list of all 4k UHD disc releases from https://thedigitalbits.com/columns/the-4k-uhd-release-list/4k-uhd-list-01 to CSV format.
 
-The resulting list is shared here: https://docs.google.com/spreadsheets/d/1XgBqUDMwN-_CvbQssa7KVY_j56kimrgfePAH7i3dStM/edit#gid=1830409724
+The resulting list is shared here: https://docs.google.com/spreadsheets/d/1XgBqUDMwN-_CvbQssa7KVY_j56kimrgfePAH7i3dStM
 
 ## Usage
 
