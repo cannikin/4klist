@@ -14,3 +14,8 @@ Clone this repo, install depencencies and execute with Ruby:
     ruby 4klist.rb
 
 The CSV output is sent to stdout. Copy and paste to your spreadsheet software of choice!
+
+## Dump Files
+
+The `html-dump-*.html` files are meant to be used to test changes to the script without
+actually requesting the live site over and over again.
