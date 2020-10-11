@@ -13,12 +13,19 @@ Clone this repo, install depencencies and execute with Ruby:
     bundle install
     ruby 4klist.rb
 
-The CSV output is sent to stdout. Copy and paste to your spreadsheet software of choice!
+By default the CSV output is sent to stdout. Copy and paste to your spreadsheet software of choice!
+To output to a file instead, set a `FILE` ENV var with a path to the output:
+
+    FILE=/Users/rob/Desktop/4k-releases.csv ruby 4klist.rb
 
 ## Dump Files
 
 The `dump.html` file is the HTML source of thedigitalbits.com listing page and is meant to be used
 to test changes to the script without actually requesting the live site over and over again.
+
+Run the script with `DEBUG=1` set and it will use the dump file instead:
+
+    DEBUG=1 ruby 4klist.rb
 
 ## Changelog
 
