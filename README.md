@@ -32,4 +32,4 @@ Run the script with `DEBUG=1` set and it will use the dump file instead:
 2020-10-11
 
 * Moved logic to class-based structure
-* Title titles starting with "The" and move them to the end of the title, ie. "The Meg" -> "Meg, The"
+* Update titles starting with "The" and move it to the end of the title, ie. "The Meg" -> "Meg, The"
