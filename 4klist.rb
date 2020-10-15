@@ -19,7 +19,11 @@ overrides = {
   'Dolittle' => { dolby_vision: true }
 }
 
-parser = Parser.new(source, overrides)
+skips = [
+  "Criterion's first 4K title could be announced in 2021"
+]
+
+parser = Parser.new(source, overrides: overrides, skips: skips)
 data = parser.convert
 
 if ENV['FILE']

@@ -2,13 +2,14 @@ require 'mechanize'
 
 class Parser
 
-  attr_reader :source, :rows, :header, :overrides
+  attr_reader :source, :rows, :header, :overrides, :skips
 
-  def initialize(source, overrides = {})
+  def initialize(source, options = {})
     @source = source
     @rows = []
     @header = "Title,Reference Disc,Standout Disc,Native 4k,Dolby Vision,HDR10+,Imax Enhanced,60 FPS,Dolby Atmos,DTS:X,Release Date,Studio"
-    @overrides = overrides
+    @overrides = options[:overrides]
+    @skips = options[:skips]
   end
 
   def convert
@@ -53,21 +54,23 @@ class Parser
       date = parse_date(item)
       features = parse_features(title, item)
 
-      [
-        "\"#{title}\"",
-        reference,
-        standout,
-        features[:native4k],
-        features[:dolby_vision],
-        features[:hdr10plus],
-        features[:imax],
-        features[:fps60],
-        features[:dolby_atmos],
-        features[:dtsx],
-        date,
-        studio
-      ].join(',')
-    end
+      if title
+        [
+          "\"#{title}\"",
+          reference,
+          standout,
+          features[:native4k],
+          features[:dolby_vision],
+          features[:hdr10plus],
+          features[:imax],
+          features[:fps60],
+          features[:dolby_atmos],
+          features[:dtsx],
+          date,
+          studio
+        ].join(',')
+      end
+    end.compact
   end
 
   private def parse_title(node)
@@ -93,7 +96,7 @@ class Parser
       title.gsub!(/^(.*?)(:| \(|$)/, '\1, The\2')
     end
 
-    [title, reference, standout]
+    [title, reference, standout] unless skip_title?(title)
   end
 
   private def parse_date(node)
@@ -132,6 +135,10 @@ class Parser
     feat.merge!(overrides[title]) if overrides[title]
 
     feat
+  end
+
+  private def skip_title?(title)
+    skips.include?(title)
   end
 
 end
