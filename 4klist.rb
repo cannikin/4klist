@@ -16,7 +16,9 @@ else
 end
 
 overrides = {
-  'Dolittle' => { dolby_vision: true }
+  'Blade' => { dolby_vision: false },
+  'Collateral' => { dolby_vision: true },
+  'Warrior' => { dolby_vision: false },
 }
 
 skips = [
@@ -26,11 +28,13 @@ skips = [
 parser = Parser.new(source, overrides: overrides, skips: skips)
 data = parser.convert
 
-if ENV['FILE']
-  File.open(ENV['FILE'], 'w') do |file|
-    file.puts data.to_csv
-  end
-  puts "File written: #{ENV['FILE']}"
-else
-  puts data.to_csv
+filename = "dumps/#{Time.now.strftime('%Y-%m-%d')}.csv"
+
+# Write output to stdout
+puts data.to_csv
+
+# Write output to file
+File.open(filename, 'w') do |file|
+  file.puts data.to_csv
 end
+puts "\n\nWrote file: #{filename}"
