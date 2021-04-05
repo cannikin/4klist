@@ -18,6 +18,8 @@ end
 overrides = {
   'Blade' => { dolby_vision: false },
   'Collateral' => { dolby_vision: true },
+  'Mulan (1998)' => { native4k: true, dolby_atmos: true },
+  'Mulan (2020)' => { native4k: true, dolby_atmos: true },
   'Warrior' => { dolby_vision: false },
 }
 
