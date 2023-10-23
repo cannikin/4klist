@@ -20,12 +20,11 @@ overrides = {
   'Collateral' => { dolby_vision: true },
   'Mulan (1998)' => { native4k: true, dolby_atmos: true },
   'Mulan (2020)' => { native4k: true, dolby_atmos: true },
+  'Parasite' => { dolby_vision: false },
   'Warrior' => { dolby_vision: false },
 }
 
-skips = [
-  "Criterion's first 4K title could be announced in 2021"
-]
+skips = []
 
 parser = Parser.new(source, overrides: overrides, skips: skips)
 data = parser.convert
